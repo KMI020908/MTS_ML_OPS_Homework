@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Churn prediction</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="w3-container w3-red w3-center" style="padding:128px 16px">
+<h1 class="w3-margin w3-jumbo">MTS SHAD 23/24</h1>
+<h1 class="w3-margin w3-jumbo">ML-OPS HOMEWORK</h1>
+  <p class="w3-xlarge">Prediction results</p>
+  <body>
+            <form action="/input_data/download" method="get">
+                <input type="hidden" name="dtime" value="{{ dtime }}">
+                <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top" type="submit" value="Download predicted data">
+                Input data
+                </button>
+            </form>
+
+            <form action="/submission/download" method="get">
+                <input type="hidden" name="dtime" value="{{ dtime }}">
+                <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top" type="submit" value="Download submission">
+                    Submission
+                </button>
+            </form>
+
+            <form action="/feature_importance/download" method="get">
+                <input type="hidden" name="dtime" value="{{ dtime }}">
+                <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top" type="submit" value="Download feature importance">
+                    Feature importance
+                </button>
+            </form>
+
+            <form action="/prediction_plot/download" method="get">
+                <input type="hidden" name="dtime" value="{{ dtime }}">
+                <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top" type="submit" value="Download prediction distribution">
+                    Prediction distribution
+                </button>
+            </form>
+
+            <form action="/" method="get">
+                <input type="hidden">
+                <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top" type="submit" value="New prediction">
+                    New prediction
+                </button>
+            </form>
+        </body>
+</header>
+
+<div class="row">
+    <div class="column">
+        {{pred_plot | safe}}
+    </div>
+    <div class="column">
+        {{proba_plot | safe}}
+    </div>
+</div>
+
+<div class="row">
+    <div class="column">
+        {{feature_importance_plot | safe}}
+    </div>
+    <div class="column">
+        {{classification_report_plot | safe}}
+    </div>
+</div>
+
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+    "file_paths": {
+        "ML_model": "src/models/ML_params/XGBModel.json",
+        "preproc_data": "src/models/ML_params/preproc_data.json",
+        "train_data": "data/train_model/train.csv",
+        "input_folder": "data/input",
+        "output_folder": "data/output",
+        "feature_importance": "data/feature_importance",
+        "prediction_plot": "data/prediction_plot"
+    },
+
+    "data_storage": {
+        "storage_volume": 5,
+        "storage_del_frac": 0.2,
+        "data_paths": [
+            {"dir": "feature_importance"},
+            {"dir": "input"},
+            {"dir": "output"},
+            {"dir": "prediction_plot"}
+        ]
+    }
+}

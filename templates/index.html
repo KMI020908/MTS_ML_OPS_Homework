@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Churn prediction</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+
+</style>
+</head>
+<body>
+
+
+<!-- Header -->
+<header class="w3-container w3-red w3-center" style="padding:100px 16px">
+  <h1 class="w3-margin w3-jumbo">MTS SHAD 23/24</h1>
+  <h1 class="w3-margin w3-jumbo">ML-OPS HOMEWORK</h1>
+
+  <p class="w3-xlarge">Please upload the input csv file for the prediction</p>
+  <body>
+      <form action="/submission" enctype="multipart/form-data" method="post">
+        <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">
+          <input  id="file-upload" name="files" type="file" multiple accept=".csv" onchange="validateInput()"/>
+        </button>
+        <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top" id="submit-btn" type="submit" disabled>
+          Predict
+        </button>
+      </form>
+</body>
+</header>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1>Description</h1>
+      <h5 class="w3-padding-32">This is the dummy web application for the MTS SHAD 23/24 ML-OPS homework. The aim of this homework is to understand how to implement ML models into production applications
+        and how to manipulate them using Docker. In order to make the prediction you have to pass the csv file with user's data (data example here). After pushing predict button you will be able to download:
+        <li> input data you passed in the csv format</li>
+        <li> submission csv file</li>
+        <li> top-5 feature importance JSON file </li>
+        <li> distribution of the predicted labels in the png format</li>
+      </h5>
+    </div>
+
+    <div class="w3-third w3-center">
+      <img src=/static/mts_logo.png width="200"
+      height="200" alt="MTS logo">
+    </div>
+  </div>
+</div>
+
+
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+function validateInput() {
+  var fileInput = document.getElementById('file-upload');
+  var submitButton = document.getElementById('submit-btn');
+  if (fileInput.files.length > 0) {
+    submitButton.disabled = false;
+  } else {
+    submitButton.disabled = true;
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+*.env
+*setup.cfg
+**__pycache__**
+*.venv
+**/data/feature_importance/**
+**/data/input/**
+**/data/output/**
+**/data/prediction_plot/**
