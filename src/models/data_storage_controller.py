@@ -17,6 +17,7 @@ class DataStorage:
             if len(dir_lst) > self.storage_volume:
                 dir_lst = np.sort(dir_lst)
                 last_file = int(self.storage_volume * self.storage_del_frac)
-                for file in np.sort(dir_lst)[:last_file]:
-                    path = pathlib.Path(os.path.join(self.relative_path, data['dir'], file))
-                    path.unlink()
+                for file in np.sort(dir_lst)[:last_file+1]:
+                    if file != '.pathholder':
+                        path = pathlib.Path(os.path.join(self.relative_path, data['dir'], file))
+                        path.unlink()
